@@ -1,0 +1,18 @@
+.content {
+    padding: 45px 36px;
+    width: 100%;
+    background: var(--bg-content-color);
+}
+
+.content__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.content__h1 {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 30px;
+    color: var(--h1-color);
+}

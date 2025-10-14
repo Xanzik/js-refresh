@@ -1,0 +1,48 @@
+:root {
+    --font-family: "Comfortaa", sans-serif;
+
+    --bg-content-color: #f3f6fd;
+    --bg-sidebar-color: #fbfaff;
+    --bg-nav-item-color: #fff;
+    --bg-progress-bar-color: #e6e9ed;
+    --bg-progress-value-color: #5051F9;
+    --bg-done-button-color: #edecfe;
+
+    --h1-color: #000;
+    --label-progress-color: #232360;
+    --value-progress-color: #768396;
+    --habits-color: #23235f;
+    --input-placeholder-color: #8899a8;
+
+
+    --shadow-nav-item: 0 8px 14px 0 rgba(62, 107, 224, 0.12);
+    --shadow-modal-content: 0 8px 14px 12px rgba(56, 56, 56, 0.05);
+
+    --border-add-button-color: #cad5ff;
+    --border-habit-input-color: #e7ebfb;
+    --border-1: 1px;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+body,
+h1,
+ul, 
+button {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    display: flex;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+main {
+    margin: 0 auto;
+    display: flex;
+}

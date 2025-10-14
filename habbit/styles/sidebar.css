@@ -1,0 +1,15 @@
+.sidebar {
+    background: var(--bg-sidebar-color);
+    padding: 28px 29px;
+    text-align: center;
+}
+
+.sidebar__button {
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    padding: 10px;
+    background: none;
+    border-radius: 14px;
+    border: var(--border-1) solid var(--border-add-button-color);
+}
