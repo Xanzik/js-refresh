@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "icon": "dumbbell",
+    "name": "Push-ups",
+    "target": 10,
+    "days": [
+      { "comment": "Always hard"},
+      { "comment": "Today easy"}
+    ]
+  },
+  {
+    "id": 2,
+    "icon": "plate",
+    "name": "Proper nutrition",
+    "target": 10,
+    "days": [
+      { "comment": "Cool"}
+    ]
+  }
+]

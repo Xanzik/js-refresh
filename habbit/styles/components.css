@@ -138,6 +138,8 @@
 }
 
 .habits__comment {
+    display: flex;
+    gap: 14px;
     position: relative;
     width: 100%;
 }
