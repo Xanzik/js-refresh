@@ -21,12 +21,24 @@
 
 .nav-item {
     display: flex;
-    padding: 10px;
     border-radius: 14px;
     background: var(--bg-nav-item-color);
     box-shadow: var(--shadow-nav-item);
     text-align: center;
     cursor: pointer;
+}
+
+.nav-button {
+    padding: 10px;
+}
+
+.nav-button img {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .nav-item img {
@@ -182,10 +194,6 @@
     outline: none;
 }
 
-.button--ml-auto {
-    margin-left: auto;
-}
-
 .button-primary {
     padding: 14px 32px;
     border-radius: 9px;
@@ -194,4 +202,8 @@
     font-size: 13px;
     color: var(--bg-progress-value-color);
     background: var(--bg-done-button-color);
+}
+
+.button--ml-auto {
+    margin-left: auto;
 }

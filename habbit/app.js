@@ -12,6 +12,10 @@ const page = {
         progressBar: document.querySelector('.progress__bar'),
         habits: document.querySelector('.habits'),
     },
+    modal: {
+        body: document.querySelector('.modal'),
+        iconField: document.querySelector('.modal__form input[name="icon"]'),
+    },
 }
 
 function loadData() {
@@ -89,6 +93,7 @@ function rerender(activeHabbitId) {
     if(!activeHabbit) {
         return;
     }
+    document.location.replace(document.location.pathname + '#' + activeHabbitId);
     rerenderMenu(activeHabbit);
     renderHead(activeHabbit);
     renderContent(activeHabbit);
@@ -96,24 +101,20 @@ function rerender(activeHabbitId) {
 
 function addDay(event) {
     event.preventDefault();
-    const form = event.target;
-    const data = new FormData(form);
-    const comment = data.get('comment');
-    form['comment'].classList.remove('error');
-    if(!comment) {
-        form['comment'].classList.add('error');
+    const data = validateForm(event.target, ['comment']);
+    if(!data) {
         return;
     }
     habbits = habbits.map(habbit => {
         if(habbit.id === globalActiveHabbitId) {
             return {
                 ...habbit,
-                days: habbit.days.concat([{ comment }])
+                days: habbit.days.concat([{ comment: data.comment }])
             }
         }
         return habbit;
     })
-    form['comment'].value = '';
+    resetForm(event.target, ['comment']);
     rerender(globalActiveHabbitId);
     saveData();
 }
@@ -133,7 +134,78 @@ function deleteDay(index) {
     saveData();
 }
 
+function toogleModal() {
+    if(page.modal.body.classList.contains('modal--hidden')) {
+        page.modal.body.classList.remove('modal--hidden');
+    } else {
+        page.modal.body.classList.add('modal--hidden');
+    }
+}
+
+function setIcon(context, icon) {
+    page.modal.iconField.value = icon;
+    const parentElement = context.parentElement;
+    const activeIcon = document.querySelector('.modal-item--active');
+    activeIcon.classList.remove('modal-item--active');
+    parentElement.classList.add('modal-item--active');
+}
+
+function addHabbit(event) {
+    event.preventDefault();
+    const data = validateForm(event.target, ['icon', 'name','target']);
+    if(!data) {
+        return;
+    }
+    const id = habbits.length > 0 ? habbits.length + 1 : 1;
+    habbits.push({
+        id: id,
+        icon: data.icon,
+        name: data.name,
+        target: data.target,
+        days: [],
+    });
+    saveData();
+    resetForm(event.target, ['name','target']);
+    toogleModal();
+    rerender(habbits[id - 1].id)
+}
+
+function validateForm(form, fields) {
+    const formData = new FormData(form);
+    const res = {};
+    for(const field of fields) {
+        const fieldValue = formData.get(field);
+        form[field].classList.remove('error');
+        if(!fieldValue) {
+            form[field].classList.add('error');
+        }
+        res[field] = fieldValue;
+    }
+    let isValid = true;
+    for (const field of fields) {
+        if(!res[field]) {
+            isValid = false;
+        }
+    }
+    if(!isValid) {
+        return;
+    }
+    return res;
+}
+
+function resetForm(form, fields) {
+    for (const field of fields) {
+        form[field].value = '';
+    }
+}
+
 (() => {
     loadData();
-    rerender(habbits[0].id);
+    const hashId = Number(document.location.hash.replace('#', ''));
+    const urlHabbit = habbits.find(habbit => Number(habbit.id) === hashId);
+    if(urlHabbit) {
+        rerender(urlHabbit.id);
+    } else {
+        rerender(habbits[0].id ? habbits[0].id : false);
+    }
 })();

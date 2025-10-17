@@ -26,7 +26,7 @@
                     <li class="nav-item" nav-habbit-id="3"><button class="button nav-button"><img src="images/icons/plate-icon.svg" alt="eat" class="icon"></button></li> -->
                 </ul>
             </nav>
-            <button class="button sidebar__button">
+            <button class="button sidebar__button" onclick="toogleModal()">
                 <img src="images/icons/add-icon.svg" alt="add habbit" class="sidebar__button-icon">
             </button>
         </aside>
@@ -54,26 +54,27 @@
                     <form class="habits__comment" onsubmit= "addDay(event)">
                         <img src="images/icons/comment-icon.svg" alt="comment" class="habits__comment-icon">
                         <input name="comment" type="text" placeholder="Комментарий" class="input">
-                        <button class="button button-primary button--ml-auto" type="submit">Готово</button>s
+                        <button class="button button-primary button--ml-auto" type="submit">Готово</button>
                     </form>
                 </li>
             </ul>
         </section>
-        <div class="modal">
+        <div class="modal modal--hidden">
             <div class="modal__content">
                 <h2 class="modal__h2">Новая привычка</h2>
                 <h3 class="modal__h3">Иконка</h3>
-                <ul class="nav-list nav-list--mb-18">
-                    <li class= "nav-item nav-item--active"><button class="button nav-button"><img src="images/icons/dumbbell-icon.svg" alt="dumbbell" class="icon"></button></li>
-                    <li class= "nav-item"><button class="button nav-button"><img src="images/icons/water-icon.svg" alt="water" class="icon"></button></li>
-                    <li class= "nav-item"><button class="button nav-button"><img src="images/icons/plate-icon.svg" alt="eat" class="sicon"></button></li>
+                <ul class="modal-list modal-list--mb-18">
+                    <li class= "modal-item modal-item--active"><button class="button nav-button" onclick="setIcon(this, 'dumbbell')"><img src="images/icons/dumbbell-icon.svg" alt="dumbbell" class="modal__icon"></button></li>
+                    <li class= "modal-item"><button class="button nav-button" onclick="setIcon(this, 'water')"><img src="images/icons/water-icon.svg" alt="water" class="modal__icon"></button></li>
+                    <li class= "modal-item"><button class="button nav-button" onclick="setIcon(this, 'plate')"><img src="images/icons/plate-icon.svg" alt="eat" class="modal__icon"></button></li>
                 </ul>
-                <div class="modal__inputs">
-                    <input type="text" placeholder="Название" class="input input--modal input--padding-20 input--mb-6">
-                    <input type="text" placeholder="Цель" class="input input--modal input--padding-20 input--mb-17">
-                </div>
-                <button class="button button-primary">Добавить</button>
-                <button class="button modal__close-button"><img src="images/icons/close-icon.svg" alt="close"></button>
+                <form class="modal__form" onsubmit="addHabbit(event)">
+                    <input type="text" placeholder="Название" name="name" class="input input--modal input--padding-20 input--mb-6">
+                    <input type="icon" name="icon" id="icon" placeholder="icon" hidden value="dumbbell">
+                    <input type="text" placeholder="Цель" name="target" class="input input--modal input--padding-20 input--mb-17">
+                    <button class="button button-primary">Добавить</button>
+                </form>
+                <button class="button modal__close-button" onclick="toogleModal()"><img src="images/icons/close-icon.svg" alt="close"></button>
             </div>
         </div>
     </main>
