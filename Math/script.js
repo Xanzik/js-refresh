@@ -1,0 +1,1 @@
+const randomDAndD = (min, max) => Number((Math.random() * (max - min) + min).toFixed(0));

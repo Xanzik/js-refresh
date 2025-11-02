@@ -1,0 +1,25 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "book-app",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "live-server",
+    "build": "rollup -c --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Xanzik",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.38.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "eslint": "^9.38.0",
+    "globals": "^16.4.0",
+    "rollup": "^4.52.5",
+    "rollup-plugin-import-css": "^4.1.0"
+  },
+  "dependencies": {
+    "on-change": "^6.0.1"
+  }
+}
